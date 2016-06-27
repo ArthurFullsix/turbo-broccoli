@@ -1,0 +1,6 @@
+site:
+  build: site
+  ports :
+   - "80:80"
+  volumes:
+   - ./templates:/var/www/html/templates/

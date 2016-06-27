@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>List Dir</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <style>body{margin:0}html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}a{background-color:transparent;color:#DD4814;text-decoration:none}a:active,a:hover{outline:0}strong{font-weight:700}body{background-color:#fff}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}td,th{padding:0}*,:after,:before{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}html{font-size:10px;-webkit-tap-highlight-color:transparent}body{font-family:Ubuntu,Tahoma,"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:14px;line-height:1.42857143;color:#333}a:focus,a:hover{color:#97310e;text-decoration:underline}a:focus{outline:dotted thin;outline:-webkit-focus-ring-color auto 5px;outline-offset:-2px}.text-left{text-align:left}.text-right{text-align:right}.text-muted{color:#AEA79F}table{background-color:transparent}ol{margin-top:0;margin-bottom:10px}@media (min-width:768px){.container{width:750px}}th{text-align:left}.container{margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px}@media (min-width:992px){.container{width:970px}}@media (min-width:1200px){.container{width:1170px}}.col-sm-2,.col-sm-8{position:relative;min-height:1px;padding-left:15px;padding-right:15px}@media (min-width:768px){.col-sm-2,.col-sm-8{float:left}.col-sm-8{width:66.66666667%}.col-sm-2{width:16.66666667%}}table{border-collapse:collapse;border-spacing:0}.table{width:100%;margin-bottom:20px}.table>tbody>tr>td,.table>tfoot>tr>td,.table>thead>tr>th{padding:8px;line-height:1.42857143;vertical-align:top;border-top:1px solid #ddd}.table>thead>tr>th{vertical-align:bottom;border-bottom:2px solid #ddd}.table>thead:first-child>tr:first-child>th{border-top:0}.table-hover>tbody>tr:hover{background-color:#f5f5f5}table th[class*=col-]{position:static;float:none;display:table-cell}.table-responsive{overflow-x:auto;min-height:.01%}@media screen and (max-width:767px){.table-responsive{width:100%;margin-bottom:15px;overflow-y:hidden;-ms-overflow-style:-ms-autohiding-scrollbar;border:1px solid #ddd}.table-responsive>.table{margin-bottom:0}.table-responsive>.table>tbody>tr>td,.table-responsive>.table>tfoot>tr>td,.table-responsive>.table>thead>tr>th{white-space:nowrap}}.form-control::-moz-placeholder{color:#AEA79F;opacity:1}.form-control:-ms-input-placeholder{color:#AEA79F}.form-control::-ms-expand{border:0;background-color:transparent}.breadcrumb{padding:8px 15px;margin-bottom:20px;list-style:none;background-color:#f5f5f5;border-radius:4px}.breadcrumb>li{display:inline-block}.container:after,.container:before{content:" ";display:table}.container:after{clear:both}th{cursor:pointer}// html{position:relative;min-height:100%}body{margin-bottom:2.5em}</style>
+</head>
+<body dir="ltr">
+<div class="container">
+    <ol class="breadcrumb" dir="ltr">
+        <li><a href="/"><i class="fa fa-home fa-lg fa-fw"></i> </a></li>
+    </ol>
+    <div class="table-responsive">
+        <table id="bs-table" class="table table-hover">
+            <thead>
+            <tr>
+                <th class="text-right" data-sort="int">#</th>
+                <th class="col-sm-8 text-left" data-sort="string">Name</th>
+                <th class="col-sm-2 text-right" data-sort="int">Size</th>
+                <th class="col-sm-2 text-right" data-sort="int">Modified</th>
+            </tr>
+            </thead>
+            <tfoot>
+            <tr>
+                <td colspan="4">
+                </td>
+            </tr>
+            </tfoot>
+            <tbody>
+            {% for file in directory %}
+                <tr>
+                    <td class="text-muted text-right" data-sort-value="loop.index">{{ loop.index }}</td>
+                    <td class="text-left"><i class="fa fa-{{ file.type }} "></i>&nbsp;<a href="{{ file.link }}" ><strong>{{ file.name }}</strong></a></td>
+                    <td class="text-right" data-sort-value="0">{{ file.size | raw }}</td>
+                    <td class="text-right" data-sort-value="1451432473" title="2015-12-29 23:41:13">{{ file.lastmod |date("d/m/Y H:i:s")  }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
